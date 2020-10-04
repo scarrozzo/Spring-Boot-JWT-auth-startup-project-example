@@ -5,6 +5,7 @@ import org.altervista.scarrozzo.jwtexample.domain.CustomUser;
 import org.altervista.scarrozzo.jwtexample.mapper.SecurityUserMapper;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
@@ -41,7 +42,14 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
     protected @Override void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                                       FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        response.addHeader(AUTH_HEADER_KEY,
-                TOKEN_PREFIX + generateToken(((User) authResult.getPrincipal()).getUsername()));
+        if(authResult.getPrincipal() instanceof UsernamePasswordAuthenticationToken){
+            logger.info("token generated using custom authentication provider");
+            response.addHeader(AUTH_HEADER_KEY,
+                    TOKEN_PREFIX + generateToken(((UsernamePasswordAuthenticationToken) authResult.getPrincipal()).getName()));
+        } else {
+            logger.info("token generated using db custom user");
+            response.addHeader(AUTH_HEADER_KEY,
+                    TOKEN_PREFIX + generateToken(((User) authResult.getPrincipal()).getUsername()));
+        }
     }
 }
