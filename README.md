@@ -1,5 +1,7 @@
 # Spring-Boot-JWT-auth-startup-project-example
- Example project for JWT auth with Spring Boot and Spring Security
+Example project for JWT authentication with Spring Boot and Spring Security. It can be used as an ad hoc template for the creation of a Spring Boot project that requires one or more authentication providers.
+
+In the example we use the classic authentication provider based on username and password. There is also an example of a custom authentication provider (e.g. integration with external authentication systems via API).
 
 # How to use
 
