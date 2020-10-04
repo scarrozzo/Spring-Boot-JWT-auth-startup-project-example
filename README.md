@@ -15,6 +15,9 @@
 This project has been tested with these versions:
 
 Spring Boot 2.3.4
+
 Java version 11.0.5
+
 Apache Maven 3.6.3
+
 MySQL server 8.0.18
