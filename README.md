@@ -6,6 +6,7 @@
 1) Install MySQL server
 2) Create a "jwtexample" database
 3) Create the example tables
+```sql
 CREATE TABLE `custom_user` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
 	`email` VARCHAR(100) NOT NULL,
@@ -24,6 +25,7 @@ CREATE TABLE `movie` (
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB;
+```
 4) Edit application.yml file (path  src/main/resources) with your database details
 5) Import the project using your favourite IDE as a maven project
 6) Install lombok plugin into your IDE (see: https://www.baeldung.com/lombok-ide)
